@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pratiquie des fonctions</title>
+    <script>
+      // function isPalindrome(word) {
+      //   /*
+      //   Reverse
+      //   Split
+      //   Join
+      //   Touppercase
+      //   */
+      //  const letters = word
+      //  .split('')
+      //  .reverse()
+      //  .join('')
+      //  .toUpperCase()
+      //  console.log(letters);
+      //  return word.toUpperCase() === letters
+      // }
+      // const words = {
+      //   kayak: true,
+      //   sos: true,
+      //   Kayak: true,
+      //   Bonjour: true,
+      // };
+      // for (let word in words) {
+      //   if (isPalindrome(word) !== words[word]) {
+      //     console.error(`Le mot ${word} n'est pas un palindrome`);
+      //   }else{
+      //     console.log(`Le mot ${words[word]} est un palindrome`);
+      //   }
+      // }
+
+      /*
+Je dois calculer la moyenne  des eleves 
+Ensuite les classeer par ordre croissant 
+Pour enfin selectionné les 3 eleves ayant les mùeilleurs notes
+*/
+      const studdents = [
+        {
+          name: "magid",
+          notes: [20, 18, 15, 17, 14],
+        },
+        {
+          name: "fall",
+          notes: [20, 12, 15, 17, 15],
+        },
+        {
+          name: "leye",
+          notes: [10, 18, 15, 17, 14],
+        },
+        {
+          name: "Sacre",
+          notes: [20, 18, 15, 11, 14],
+        },
+      ];
+      const moyenne = (notes) => {
+        let sum = 0;
+        for (let note of notes) {
+          sum = sum + note;
+        }
+
+        return sum / notes.length;
+      };
+      const compareStuddents = (b, a) => {
+        return a.moyenne - b.moyenne;
+      };
+      for (let student of studdents) {
+        student.moyenne = moyenne(student.notes);
+        student.best = Math.max(...student.notes);
+        student.worst = Math.min(...student.notes);
+      }
+      studdents.sort(compareStuddents);
+      const formatStuddent = (student) => {
+        return `${student.name} avec une moyenne de ${student.moyenne} 
+        Sa meilleur note est de ${student.best} 
+        Sa pire note est de  ${student.worst}`;
+      };
+      console.log(`
+      Voici le top 3 des eleves 
+      1 : ${formatStuddent(studdents[0])}
+      2 : ${formatStuddent(studdents[1])}
+      3 : ${formatStuddent(studdents[2])}
+      `);
+    </script>
+  </head>
+  <body></body>
+</html>
